@@ -36,7 +36,8 @@ const NETWORKS = [
         "RPC": "https://rpc.startale.com/zkyoto",
         "symbol": "ETH",
         "explorer": "https://zkyoto.explorer.startale.com/address/",
-        "amount": 0.005
+        // "amount": 0.005
+        "amount": 1
     },
     {
         "name": "Amoy Testnet",
