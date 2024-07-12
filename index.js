@@ -36,8 +36,7 @@ const NETWORKS = [
         "RPC": "https://rpc.startale.com/zkyoto",
         "symbol": "ETH",
         "explorer": "https://zkyoto.explorer.startale.com/address/",
-        // "amount": 0.005
-        "amount": 1
+        "amount": 0.005
     },
     {
         "name": "Amoy Testnet",
@@ -74,7 +73,7 @@ async function checkBalanceAndNotify() {
                 const currentTime = new Date().toLocaleString();
                 console.log(`Notification sent at ${network.name}`);
                 const message = `🚨 CRYPTO EMERGENCY: WALLET ON LIFE SUPPORT! 🚨
-🕰️ Doomsday Clock: ${currentTime}
+🕰️ Doomsday Clock: ${currentTime}(UTC) 
 
 🌐 Battlefield: ${network.name}
 
@@ -125,7 +124,7 @@ const startBotLog = async () => {
     await bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message);
 }
 
-cron.schedule('*/1 * * * *', () => {
+cron.schedule('*/58 * * * *', () => {
     checkBalanceAndNotify();
 });
 
