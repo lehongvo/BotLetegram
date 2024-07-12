@@ -125,7 +125,7 @@ const startBotLog = async () => {
     await bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message);
 }
 
-cron.schedule('*/55 * * * *', () => {
+cron.schedule('*/1 * * * *', () => {
     checkBalanceAndNotify();
 });
 
