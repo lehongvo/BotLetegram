@@ -118,8 +118,7 @@ P.S. If your portfolio gets any redder, we might have to call the fire departmen
 }
 
 const startBotLog = async () => {
-    const message = `👛 Wallet: ${process.env.WALLET_ADDRESS}
-🚀 Bot re-started at ${new Date().toLocaleString()}
+    const message = `🚀 Bot re-started at ${new Date().toLocaleString()}
 👛 Wallet: ${process.env.WALLET_ADDRESS}
 🚀 Recall every hour`;
     await bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message);
