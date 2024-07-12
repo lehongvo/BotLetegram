@@ -32,10 +32,10 @@ const NETWORKS = [
         "amount": 2
     },
     {
-        "name": "zKyoto Testnet",
-        "RPC": "https://rpc.testnet.kyotoprotocol.io:8545",
+        "name": "zKyoto Network",
+        "RPC": "https://rpc.startale.com/zkyoto",
         "symbol": "ETH",
-        "explorer": "https://testnet.kyotoscan.io/address/",
+        "explorer": "https://zkyoto.explorer.startale.com/address/",
         "amount": 0.005
     },
     {
@@ -71,6 +71,7 @@ async function checkBalanceAndNotify() {
 
             if (parseFloat(balanceInEther) < parseFloat(network.amount)) {
                 const currentTime = new Date().toLocaleString();
+                console.log(`Notification sent at ${network.name}`);
                 const message = `🚨 CRYPTO EMERGENCY: WALLET ON LIFE SUPPORT! 🚨
 🕰️ Doomsday Clock: ${currentTime}
 
@@ -116,11 +117,19 @@ P.S. If your portfolio gets any redder, we might have to call the fire departmen
     }
 }
 
-cron.schedule('*/5 * * * *', () => {
+const startBotLog = async () => {
+    const message = `👛 Wallet: ${process.env.WALLET_ADDRESS}
+🚀 Bot re-started at ${new Date().toLocaleString()}
+👛 Wallet: ${process.env.WALLET_ADDRESS}
+🚀 Recall every hour`;
+    await bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message);
+}
+
+cron.schedule('*/55 * * * *', () => {
     checkBalanceAndNotify();
 });
 
-checkBalanceAndNotify();
+startBotLog();
 
 app.get('/', (req, res) => {
     res.send('Application is running. Monitoring wallet balance...');
