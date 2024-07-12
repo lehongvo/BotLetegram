@@ -43,7 +43,7 @@ const NETWORKS = [
         "RPC": "https://rpc-amoy.polygon.technology",
         "symbol": "MATIC",
         "explorer": "https://amoy.polygonscan.com/address/",
-        "amount": 2
+        "amount": 0.5
     },
     {
         "name": "Astar Mainnet",
@@ -116,7 +116,7 @@ P.S. If your portfolio gets any redder, we might have to call the fire departmen
     }
 }
 
-cron.schedule('* * * * *', () => {
+cron.schedule('0 * * * *', () => {
     checkBalanceAndNotify();
 });
 
