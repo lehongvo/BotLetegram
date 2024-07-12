@@ -116,7 +116,7 @@ P.S. If your portfolio gets any redder, we might have to call the fire departmen
     }
 }
 
-cron.schedule('0 * * * *', () => {
+cron.schedule('*/10 * * * *', () => {
     checkBalanceAndNotify();
 });
 
