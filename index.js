@@ -117,18 +117,9 @@ P.S. If your portfolio gets any redder, we might have to call the fire departmen
     }
 }
 
-const startBotLog = async () => {
-    const message = `🚀 Bot re-started at ${new Date().toLocaleString()}
-👛 Wallet: ${process.env.WALLET_ADDRESS}
-🚀 Recall every hour`;
-    await bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message);
-}
-
-cron.schedule('*/58 * * * *', () => {
+cron.schedule('0 * * * *', () => {
     checkBalanceAndNotify();
 });
-
-startBotLog();
 
 app.get('/', (req, res) => {
     res.send('Application is running. Monitoring wallet balance...');
